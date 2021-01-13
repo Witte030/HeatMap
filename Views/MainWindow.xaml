@@ -1,0 +1,27 @@
+﻿<mah:MetroWindow x:Class="HeatMap.Views.MainWindow"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Grid.Column="0" Header="Locatie laser bestand" >
+            <TextBox Text="{Binding CsvPath, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                     mah:TextBoxHelper.ButtonCommand="{Binding GetCsvPathCommand}"
+                     mah:TextBoxHelper.Watermark="Locatie csv bestand">
+                <TextBox.Style>
+                    <Style BasedOn="{StaticResource MahApps.Styles.TextBox.Search}" TargetType="{x:Type TextBox}">
+                        <Setter Property="mah:TextBoxHelper.ButtonContent" Value="r" />
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+        </GroupBox>
+        <Button Command="{Binding ConvertCommand}" Content="Convert" Grid.Row="1" Grid.Column="0" Margin="5"/>
+    </Grid>
+</mah:MetroWindow>
